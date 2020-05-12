@@ -1,24 +1,17 @@
-on:
-  # Trigger the workflow on push or pull request,
-  # but only for the master branch
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+name: Build Docker images
+on: [push, pull_request]
+
 jobs:
   buildpush:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1.0
         name: Check out code
-    
-      - name: Docker Build & Push
-        uses: mr-smithers-excellent/docker-build-push@v3.1
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1
         with:
-          image: jonjozwiak/checkov-rt
-          tag: latest
-          registry: docker.io
-          dockerfile: Dockerfile
+          repository: jonjozwiak/checkov-rt
+          tags: latest
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
