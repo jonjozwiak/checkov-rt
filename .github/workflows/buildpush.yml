@@ -5,7 +5,7 @@ jobs:
   buildpush:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1.0
+      - uses: actions/checkout@v1
         name: Check out code
 
       - name: Build and push Docker images
