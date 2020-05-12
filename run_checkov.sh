@@ -40,8 +40,8 @@ if [ -f /etc/checkov/apikey ]; then
     repoid="runtime/unknown"
   fi
 
-  checkov -d /data --bc-api-key "$apikey" --repo-id "$repoid" --branch runtime
+  checkov -s -d /data --bc-api-key "$apikey" --repo-id "$repoid" --branch runtime
 else
-  checkov -d /data
+  checkov -s -d /data
 fi
 
