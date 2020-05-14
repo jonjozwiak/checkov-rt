@@ -1,6 +1,6 @@
 FROM python
 
-RUN git clone --single-branch --branch k8_support https://github.com/bridgecrewio/checkov.git /tmp/checkov
+RUN git clone https://github.com/bridgecrewio/checkov.git /tmp/checkov
 RUN pip install /tmp/checkov/
 
 # TODO - Check K8S version and use appropriate kubectl?
